@@ -1,0 +1,11 @@
+#app {
+	font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight:400;
+}
+
+
+.text-small {
+  font-size: 0.85em;
+}
