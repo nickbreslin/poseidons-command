@@ -6,6 +6,7 @@
   <div v-show="isStarted && !isDone">
     <TopicCard v-bind="currentTopic" @doAnswer="doAnswer($event)" />
 
+    <ProgressBar :percent="percentComplete" />
     {{ currentTopicCount }} of {{ totalTopics }}
     <div class="progress" style="height: 10px">
       <div
@@ -26,9 +27,6 @@ import TheIntroduction from "@/components/TheIntroduction";
 import TopicCard from "@/components/TopicCard";
 
 import topicsJSON from "@/data/topics";
-
-// TOPICCARD --> stored to vuex
-// -- responsibility of showing the result is the result view.
 
 export default {
   name: "Home",
