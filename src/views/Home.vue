@@ -6,26 +6,22 @@
   <div v-show="isStarted && !isDone">
     <TopicCard v-bind="currentTopic" @doAnswer="doAnswer($event)" />
 
-    <ProgressBar :percent="percentComplete" />
-    {{ currentTopicCount }} of {{ totalTopics }}
-    <div class="progress" style="height: 10px">
-      <div
-        :style="`width: ${percentComplete}%`"
-        class="progress-bar bg-primary"
-      ></div>
-    </div>
+    <ProgressBar :numerator="currentTopicIndex" :denominator="totalTopics" />
   </div>
   <div v-show="isDone">DONE!</div>
   <!-- Conclusion v-show="isDone" />-->
-  <div class="alert alert-success">{{ responses }}</div>
+  <TheConclusion v-show="isDone" @doBegin="doBegin()" />
+  <div class="mt-3 alert alert-success">{{ responses }}</div>
 </template>
 
 <script>
 // @ is an alias to /src
 
 import TheIntroduction from "@/components/TheIntroduction";
-import TopicCard from "@/components/TopicCard";
+import TheConclusion from "@/components/TheConclusion";
 
+import TopicCard from "@/components/TopicCard";
+import ProgressBar from "@/components/ProgressBar";
 import topicsJSON from "@/data/topics";
 
 export default {
@@ -33,6 +29,8 @@ export default {
   components: {
     TheIntroduction,
     TopicCard,
+    ProgressBar,
+    TheConclusion,
   },
   data: function () {
     return {
@@ -47,14 +45,8 @@ export default {
       let filteredTopic = this.topics.filter((e) => e.id);
       return filteredTopic[this.currentTopicIndex];
     },
-    currentTopicCount() {
-      return this.currentTopicIndex + 1;
-    },
     totalTopics() {
       return this.topics.length;
-    },
-    percentComplete() {
-      return (100 / this.totalTopics) * this.currentTopicIndex;
     },
     isDone() {
       return this.currentTopicIndex == this.totalTopics;

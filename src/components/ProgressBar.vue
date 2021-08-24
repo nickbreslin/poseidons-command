@@ -1,9 +1,10 @@
 <template>
+  <div class="">{{ numerator }} of {{ denominator }}</div>
   <div class="progress" :style="`height: ${height}px`">
     <div
-      :style="`width: ${percentComplete}%`"
+      :style="`width: ${percent}%`"
       class="progress-bar"
-      :class="`bg-${primary}`"
+      :class="`bg-${bgClass}`"
     ></div>
   </div>
 </template>
@@ -12,11 +13,18 @@
 export default {
   name: "ProgressBar",
   props: {
-    percent: {
+    numerator: {
       type: Number,
       default: 0,
       validator: function (value) {
-        return value >= 0 && value <= 100;
+        return value >= 0;
+      },
+    },
+    denominator: {
+      type: Number,
+      default: 1,
+      validator: function (value) {
+        return value >= 1;
       },
     },
     height: {
@@ -38,6 +46,12 @@ export default {
           ].indexOf(value) !== -1
         );
       },
+    },
+  },
+  computed: {
+    percent() {
+      let percent = (100 / this.denominator) * this.numerator;
+      return percent;
     },
   },
 };
