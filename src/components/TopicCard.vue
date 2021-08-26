@@ -4,42 +4,35 @@
       <div class="card-header fw-bold h4">
         {{ label }}
       </div>
-    </div>
-    <div class="card-body">
-      <button
-        v-show="!isRevealed"
-        class="btn btn-lg btn-secondary fw-bold"
-        @click="reveal()"
-      >
-        Reveal card
-      </button>
-    </div>
-    <div class="alert alert-info text-dark fw-bold h1">
-      <div class="h3">
-        How much do you know about <b>{{ label }}</b>
+
+      <div class="card-body">
+        <button
+          v-show="!isRevealed"
+          class="btn btn-lg btn-secondary fw-bold"
+          @click="reveal()"
+        >
+          Reveal card
+        </button>
+        <div v-show="isRevealed">
+          <p v-show="description" class="mb-0">{{ description }}</p>
+          <!-- <pre v-show="code">Code: [{{ code }}]</pre> -->
+        </div>
       </div>
-      <p v-show="description">Desc[{{ description }}]</p>
-      <pre v-show="code">Code: [{{ code }}]</pre>
-    </div>
-    <div class="btn-group">
-      <button
-        class="btn btn-lg text-uppercase fw-bold btn-outline-primary"
-        @click="doAnswer(0)"
-      >
-        Nothing
-      </button>
-      <button
-        class="btn btn-lg text-uppercase fw-bold btn-outline-primary"
-        @click="doAnswer(1)"
-      >
-        Some
-      </button>
-      <button
-        class="btn btn-lg text-uppercase fw-bold btn-outline-primary"
-        @click="doAnswer(2)"
-      >
-        Everything
-      </button>
+      <div v-show="isRevealed" class="card-footer">
+        <div class="fw-bold mb-2">How difficult was this topic?</div>
+
+        <div class="btn-group">
+          <button class="btn fw-bold btn-outline-primary" @click="doAnswer(0)">
+            Not difficult
+          </button>
+          <button class="btn fw-bold btn-outline-primary" @click="doAnswer(1)">
+            Somewhat difficult
+          </button>
+          <button class="btn fw-bold btn-outline-primary" @click="doAnswer(2)">
+            Very difficult
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
