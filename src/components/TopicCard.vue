@@ -34,6 +34,7 @@
 export default {
   name: "TopicCard",
   props: {
+    payload : Object,
     label: String,
     description: String,
     code: String,

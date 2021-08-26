@@ -5,12 +5,14 @@
   <TheIntroduction v-show="!isStarted" @doBegin="doBegin()" />
   <div v-show="isStarted && !isDone">
     <TopicCard v-bind="currentTopic" @doAnswer="doAnswer($event)" />
-
-    <ProgressBar :numerator="currentTopicIndex" :denominator="totalTopics" />
   </div>
-  <div v-show="isDone">DONE!</div>
-  <!-- Conclusion v-show="isDone" />-->
-  <TheConclusion v-show="isDone" @doBegin="doBegin()" />
+  <ProgressBar
+    v-show="isStarted"
+    :numerator="currentTopicIndex"
+    :denominator="totalTopics"
+  />
+
+  <TheConclusion v-show="isDone" />
   <div class="mt-3 alert alert-success">{{ responses }}</div>
 </template>
 
