@@ -1,14 +1,8 @@
 <template>
   <div class="text-center">
     <div class="alert alert-primary text-dark fw-bold h1">
-      This is the introduction.
+      This is the conclusion.
     </div>
-    <button
-      class="btn btn-lg text-uppercase fw-bold btn-primary"
-      @click="doBegin()"
-    >
-      Begin
-    </button>
   </div>
 </template>
 
@@ -18,7 +12,7 @@ export default {
   methods: {
     doBegin() {
       console.log("Button clicked!");
-      this.$emit("doBegin");
+      // go to the results page
     },
   },
 };

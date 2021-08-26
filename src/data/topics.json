@@ -1,7 +1,24 @@
 [{
   "id" : "topic1",
   "label" : "Topic 1",
-  "code" : "<h1></h1>"
+  "description" : "This is the description. This is the description. This is the description. This is the description. This is the description. This is the description.",
+  "code" : "<h1></h1>",
+  "responses" : [{
+    "matchValue" : [0],
+    "body" : "Result content for 0 only"
+  },
+  {
+    "matchValue" : [0,1],
+    "body" : "Result content for 0 or 1."
+  },
+  {
+    "matchValue" : [1],
+    "body" : "Result content for 1 only"
+  },
+  {
+    "matchValue" : [2],
+    "body" : "Result content for 2 only"
+  }]
 }, {
   "id" : "topic2",
   "label" : "Topic 2"

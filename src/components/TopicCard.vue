@@ -1,5 +1,19 @@
 <template>
   <div class="text-center">
+    <div class="card">
+      <div class="card-header fw-bold h4">
+        {{ label }}
+      </div>
+    </div>
+    <div class="card-body">
+      <button
+        v-show="!isRevealed"
+        class="btn btn-lg btn-secondary fw-bold"
+        @click="reveal()"
+      >
+        Reveal card
+      </button>
+    </div>
     <div class="alert alert-info text-dark fw-bold h1">
       <div class="h3">
         How much do you know about <b>{{ label }}</b>
@@ -33,16 +47,27 @@
 <script>
 export default {
   name: "TopicCard",
+  data: function () {
+    return {
+      isRevealed: false,
+    };
+  },
   props: {
-    payload : Object,
     label: String,
     description: String,
     code: String,
   },
   methods: {
+    resetState() {
+      this.isRevealed = false;
+    },
+
     doAnswer(value) {
-      console.log("Button clicked!");
       this.$emit("doAnswer", value);
+      this.resetState();
+    },
+    reveal() {
+      this.isRevealed = true;
     },
   },
 };

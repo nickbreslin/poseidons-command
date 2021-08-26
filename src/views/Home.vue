@@ -56,11 +56,9 @@ export default {
   },
   methods: {
     doBegin() {
-      console.log("Home View sees doBegin");
       this.isStarted = true;
     },
     doAnswer(value) {
-      console.log("Value", value);
       this.currentTopicIndex += 1;
       this.responses.push(value);
     },

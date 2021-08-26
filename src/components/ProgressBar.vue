@@ -1,11 +1,13 @@
 <template>
-  <div class="">{{ numerator }} of {{ denominator }}</div>
-  <div class="progress" :style="`height: ${height}px`">
-    <div
-      :style="`width: ${percent}%`"
-      class="progress-bar"
-      :class="`bg-${bgClass}`"
-    ></div>
+  <div>
+    <div class="fw-bold">{{ numerator }} of {{ denominator }}</div>
+    <div class="progress" :style="`height: ${height}px`">
+      <div
+        :style="`width: ${percent}%`"
+        class="progress-bar"
+        :class="`bg-${bgClass}`"
+      ></div>
+    </div>
   </div>
 </template>
 
@@ -51,6 +53,7 @@ export default {
   computed: {
     percent() {
       let percent = (100 / this.denominator) * this.numerator;
+      percent = Math.round(percent);
       return percent;
     },
   },
