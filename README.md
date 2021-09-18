@@ -1,5 +1,19 @@
 # yggdrasil
 
+
+
+
+User selects 0 (knows nothing).
+
+- Give them all content that matches against knows nothing.
+
+
+
+
+
+
+
+
 ## Project setup
 ```
 npm install
