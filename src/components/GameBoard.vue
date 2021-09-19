@@ -1,12 +1,16 @@
 <template>
-  <div class="grid card card-body shadow p-5">
-    <div class="grid-row">
+  <div class="grid card card-body shadow p-5 text-center">
+    <div class="grid-row justify-content-center">
       <div class="square text-center"></div>
       <div v-for="x in xAxis" :key="x" class="square m-0 p-0 text-center">
         {{ x }}
       </div>
     </div>
-    <div v-for="y in yAxis" :key="y" class="grid-row m-0 p-0">
+    <div
+      v-for="y in yAxis"
+      :key="y"
+      class="grid-row m-0 p-0 justify-content-center"
+    >
       <div class="square text-center">{{ y }}</div>
       <div
         v-for="x in xAxis"
@@ -45,6 +49,9 @@ export default {
 </script>
 
 <style scoped>
+.grid {
+  margin: auto;
+}
 .square {
   height: 75px;
   width: 75px;
