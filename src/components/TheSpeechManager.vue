@@ -1,11 +1,11 @@
 <template>
   <div class="card shadow mb-3 shadow">
-    <h1 class="text-danger" v-show="abort">ABORT</h1>
     <div class="card-header h3 text-uppercase text-center">TRANSCRIPT</div>
     <div class="card-body text-center">
-      <div class="h1">{{ command }}</div>
-      <div class="text-small">{{ transcript }}</div>
-      <!--<div class="alert alert-warning">{{ confidence }}</div>-->
+      <h3 class="text-danger" v-show="abort">
+        Error encountered. Restart recording.
+      </h3>
+      <div class="h1">{{ command }}&nbsp;</div>
       <button
         v-show="!active"
         class="btn btn-lg btn-primary text-uppercase"
@@ -20,6 +20,10 @@
       >
         <i class="bi bi-mic-mute-fill me-3"></i>Stop
       </button>
+    </div>
+    <div class="card-footer">
+      <b>Speech Recognition</b>
+      <div class="text-small">{{ transcript }}</div>
     </div>
   </div>
 </template>
