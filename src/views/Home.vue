@@ -8,7 +8,9 @@
       <TheSpeechManager @doTurn="doTurn($event)" />
       <TurnsTaken :turnsTaken="shotlist.length" />
       <Shotlist :shotlist="shotlist" />
-      {{ ships }}
+      <div class="alert alert-warning text-start">
+        <pre>{{ ships }}</pre>
+      </div>
     </div>
   </div>
   <div>
