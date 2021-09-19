@@ -31,11 +31,7 @@ export default {
   },
   data: function () {
     return {
-      shotlist: [
-        { x: "A", y: "6", hit: false },
-        { x: "C", y: "1", hit: false },
-        { x: "H", y: "5", hit: false },
-      ],
+      shotlist: [],
       ships: [
         { x: "D", y: "5" },
         { x: "D", y: "3" },

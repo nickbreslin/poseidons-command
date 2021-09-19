@@ -18,10 +18,10 @@
 -- Place the ship.
 
 speaking
--- indicator for when the speaking should begin.
--- button to begin and end the recognition
+X -- indicator for when the speaking should begin.
+X -- button to begin and end the recognition
 
--- validate input to command.
+X -- validate input to command.
 (( prompt for a confirmation ))
 (( setting))
 
