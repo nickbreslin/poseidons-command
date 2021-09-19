@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-sm-8"><GameBoard class="mb-3" :shotlist="shotlist" /></div>
     <div class="col-sm-4">
-      <TheSpeechManager />
+      <TheSpeechManager @doTurn="doTurn($event)" />
       <TurnsTaken :turnsTaken="shotlist.length" />
       <Shotlist :shotlist="shotlist" />
     </div>
@@ -39,13 +39,13 @@ export default {
   },
   computed: {},
   methods: {
-    doTurn(x, y) {
+    doTurn(shot) {
       // can't repeat a shot.
       //
 
       this.turnsTaken += 1;
 
-      this.shotlist.push({ x: x, y: y });
+      this.shotlist.push({ x: shot.x, y: shot.y, hit: false });
 
       // if win condition?
 

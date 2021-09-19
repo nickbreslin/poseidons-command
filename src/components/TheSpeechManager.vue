@@ -63,6 +63,9 @@ export default {
       // remove dashes
       //
 
+      // implement phonetic alphabet
+      // 1 is one
+
       let x = transcript[0];
       let y = transcript.substring(1, transcript.length);
 
