@@ -43,6 +43,7 @@ export default {
       this.active = !this.active;
 
       if (this.active) {
+        this.abort = false;
         this.recognition.start();
       } else {
         this.recognition.stop();
