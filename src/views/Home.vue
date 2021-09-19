@@ -6,10 +6,7 @@
     <div class="col-8"><GameBoard class="mb-3" /></div>
     <div class="col-4">
       <TheSpeechManager v-if="0" class="mb-3 card card-body shadow" />
-      <div class="card shadow mb-3">
-        <div class="card-header h3 text-uppercase">Turns Taken</div>
-        <div class="card-body">{{ turnsTaken }}</div>
-      </div>
+      <TurnsTaken :turnsTaken="turnsTaken" />
 
       <div class="card shadow mb-3 shadow">
         <div class="card-header h3 text-uppercase">Shotlist</div>
@@ -36,12 +33,14 @@
 
 import TheSpeechManager from "@/components/TheSpeechManager";
 import GameBoard from "@/components/GameBoard";
+import TurnsTaken from "@/components/TurnsTaken";
 
 export default {
   name: "Home",
   components: {
     TheSpeechManager,
     GameBoard,
+    TurnsTaken,
   },
   data: function () {
     return {
