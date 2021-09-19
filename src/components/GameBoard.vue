@@ -22,10 +22,8 @@
           'alert-secondary': hitState(x, y) == 'MISS',
         }"
       >
-        <!--{{ hitState(x, y) }} -->
-        <!--{{ x }}{{ y }}-->
-        <!-- <i class="bi bi-check-circle"></i>-->
-        <!--<i class="bi bi-x-circle"></i>-->
+        <i v-if="hitState(x, y) == 'HIT'" class="bi bi-x-circle"></i>
+        <i v-if="hitState(x, y) == 'MISS'" class="bi bi-circle"></i>
       </div>
     </div>
   </div>
@@ -74,6 +72,6 @@ export default {
 }
 
 .bi {
-  font-size: 2em;
+  font-size: 3em;
 }
 </style>
