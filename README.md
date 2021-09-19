@@ -6,22 +6,20 @@
 
 ## BUGS
 
--- Should not be able to make a shot on a shot that was already taken.
--- Shiplist is changing whenever a hit is made.
+X Should not be able to make a shot on a shot that was already taken.
+X Shiplist is changing whenever a hit is made.
 
-- Place ships
--- Choose an orientation
--- Find an initial grid-square
----- Check to make sure the ship can fit.
+X Place ships
+X Choose an orientation
+X Find an initial grid-square
+X Check to make sure the ship can fit.
 
--- 2 - frigate
--- 3 - sub
--- 3 - destroyer
--- 4 - battleship
--- 5 - carrier
-
-
--- Place the ship.
+X -- 2 - frigate
+X -- 3 - sub
+X -- 3 - destroyer
+X -- 4 - battleship
+X -- 5 - carrier
+X -- Place the ship.
 
 speaking
 X -- indicator for when the speaking should begin.
@@ -31,7 +29,7 @@ X -- validate input to command.
 (( prompt for a confirmation ))
 (( setting))
 
--- check for what ships are out there.
+X -- check for what ships are out there.
 
 (( ship hit list / if it is sunk, update it))
 
