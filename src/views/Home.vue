@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-sm-8"><GameBoard class="mb-3" :shotlist="shotlist" /></div>
     <div class="col-sm-4">
-      <TheSpeechManager v-if="0" class="mb-3 card card-body shadow" />
+      <TheSpeechManager />
       <TurnsTaken :turnsTaken="shotlist.length" />
       <Shotlist :shotlist="shotlist" />
     </div>

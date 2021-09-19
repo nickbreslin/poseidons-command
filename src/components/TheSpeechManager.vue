@@ -1,7 +1,10 @@
 <template>
-  <div>
-    <div class="alert alert-info h2">{{ context }}</div>
-    <div class="alert alert-warning">{{ confidence }}</div>
+  <div class="card shadow mb-3 shadow">
+    <div class="card-header h3 text-uppercase text-center">TRANSCRIPT</div>
+    <div class="card-body">
+      <div class="h1">{{ context }}</div>
+      <!--<div class="alert alert-warning">{{ confidence }}</div>-->
+    </div>
   </div>
 </template>
 
