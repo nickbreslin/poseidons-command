@@ -10,6 +10,7 @@
         class="alert-success text-dark"
       />
       <SunkShips
+        v-if="1"
         :shotlist="shotlist"
         :ships="ships"
         class="alert-danger text-dark"
@@ -57,8 +58,8 @@ export default {
   computed: {},
   methods: {
     hasShip(coord) {
-      let didHit = this.ships.filter(
-        (ship) => ship.x == coord.x && ship.y == coord.y
+      let didHit = [...this.ships].filter(
+        (ship) => ship.x === coord.x && ship.y === coord.y
       );
 
       return Boolean(didHit.length);
@@ -71,7 +72,7 @@ export default {
 
       let hit = this.hasShip(shot);
 
-      this.shotlist.push({ x: shot.x, y: shot.y, hit: hit });
+      this.shotlist.unshift({ x: shot.x, y: shot.y, hit: hit });
 
       // if win condition?
 
@@ -94,8 +95,9 @@ export default {
       for (let i = 0; i < shipLength; i++) {
         let tempIndex = xIndex + i;
 
-        if (x >= xAxis.length) {
+        if (tempIndex >= xAxis.length) {
           this.placeShip(shipLength);
+          return;
         }
 
         let x = xAxis[tempIndex];
@@ -107,6 +109,7 @@ export default {
 
         if (taken) {
           this.placeShip(shipLength);
+          return;
         }
       }
 

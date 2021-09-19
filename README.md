@@ -3,6 +3,12 @@
 
 ## TODOS
 
+
+## BUGS
+
+-- Should not be able to make a shot on a shot that was already taken.
+-- Shiplist is changing whenever a hit is made.
+
 - Place ships
 -- Choose an orientation
 -- Find an initial grid-square
@@ -29,6 +35,14 @@ X -- validate input to command.
 
 (( ship hit list / if it is sunk, update it))
 
+   // 1 is won, "I1"
+      // 2 is too, "I2"
+      // b4 is before
+      // remove dashes
+      //
+
+      // implement phonetic alphabet
+      // 1 is one
 
 ## Project setup
 ```

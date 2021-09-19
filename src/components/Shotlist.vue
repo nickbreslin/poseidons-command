@@ -26,7 +26,7 @@ export default {
   computed: {
     reverselist() {
       let list = this.shotlist;
-      return list.reverse();
+      return list;
     },
   },
 };

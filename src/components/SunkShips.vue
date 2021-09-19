@@ -34,37 +34,43 @@ export default {
   computed: {
     shipNames() {
       // Find all unique ships
-      let shipNames = this.ships.map((ship) => ship.name);
+      let shipNames = [...this.ships].map((ship) => ship.name);
       return [...new Set(shipNames)];
     },
     shipsData() {
-      let ships = [];
+      let shipData = [];
 
       // Find sizes for all unique ships
       this.shipNames.forEach((shipName) => {
-        let segments = this.ships.filter((ship) => ship.name == shipName);
-        let isSunk = this.isSunk(segments);
-        ships.push({ name: shipName, size: segments.length, isSunk: isSunk });
+        let segments = [...this.ships].filter((ship) => ship.name == shipName);
+        let isShipSunk = this.didSinkShip(segments);
+        shipData.push({
+          name: shipName,
+          size: segments.length,
+          isSunk: isShipSunk,
+        });
       });
 
-      return ships;
+      return shipData;
     },
   },
   methods: {
-    isSunk(segments) {
+    didSinkShip(segments) {
       // reduce shotlist to just hitlist
       let hitlist = this.shotlist.filter((shot) => shot.hit);
 
       let hits = hitlist.filter((hit) => {
         let didHit = false;
 
-        segments.forEach((segment) => {
-          if ((segment.x = hit.x && segment.y == hit.y)) {
+        // causing some sort of overwrite of the ships prop
+        [...segments].forEach((segment) => {
+          if (segment.x == hit.x && segment.y == hit.y) {
             didHit = true;
+            return;
           }
         });
 
-        return didHit;
+        return didHit; // return for hitlist.filter
       });
 
       return segments.length == hits.length;
