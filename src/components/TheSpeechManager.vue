@@ -53,6 +53,9 @@ export default {
 
       this.command = "";
 
+      transcript = transcript.replace("-", "");
+      transcript = transcript.replace(" ", "");
+
       if (transcript.length < 2 || transcript.length > 3) {
         return false;
       }

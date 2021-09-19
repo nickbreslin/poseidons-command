@@ -8,9 +8,17 @@
       <TheSpeechManager @doTurn="doTurn($event)" />
       <TurnsTaken :turnsTaken="shotlist.length" />
       <Shotlist :shotlist="shotlist" />
+      {{ ships }}
     </div>
   </div>
-  <div v-show="gameOver"><h1>GAME OVER</h1></div>
+  <div>
+    <div class="alert alert-success text-center">
+      <h1>GAME OVER</h1>
+      <button class="btn btn-lg btn-success text-uppercase" @click="init()">
+        Restart
+      </button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -32,26 +40,26 @@ export default {
   data: function () {
     return {
       shotlist: [],
-      ships: [
-        { x: "D", y: "5" },
-        { x: "D", y: "3" },
-      ],
+      ships: [],
       gameOver: false,
     };
   },
   computed: {},
   methods: {
+    hasShip(coord) {
+      let didHit = this.ships.filter(
+        (ship) => ship.x == coord.x && ship.y == coord.y
+      );
+
+      return Boolean(didHit.length);
+    },
     doTurn(shot) {
       // can't repeat a shot.
       //
 
       this.turnsTaken += 1;
 
-      let didHit = this.ships.filter(
-        (ship) => ship.x == shot.x && ship.y == shot.y
-      );
-
-      let hit = Boolean(didHit.length);
+      let hit = this.hasShip(shot);
 
       this.shotlist.push({ x: shot.x, y: shot.y, hit: hit });
 
@@ -65,6 +73,33 @@ export default {
 
       // no lose condition.
     },
+    placeShips() {
+      let xAxis = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+      let yAxis = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+
+      let xIndex = Math.floor(Math.random() * xAxis.length);
+      let yIndex = Math.floor(Math.random() * yAxis.length);
+
+      let x = xAxis[xIndex];
+      let y = yAxis[yIndex];
+
+      let coord = { x: x, y: y };
+
+      let taken = this.hasShip(coord);
+
+      if (!taken) {
+        this.ships.push(coord);
+      }
+    },
+    init() {
+      this.shotlist = [];
+      this.ships = [];
+      this.placeShips();
+      this.gameOver = false;
+    },
+  },
+  mounted() {
+    this.init();
   },
 };
 </script>
