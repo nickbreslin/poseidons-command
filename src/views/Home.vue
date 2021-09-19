@@ -2,7 +2,7 @@
   <div class="alert alert-secondary mt-3 text-center">
     <h1 class="text-uppercase m-0">Poseidon's Command</h1>
   </div>
-  <div class="row" v-show="!gameOver">
+  <div class="row" v-show="!victory">
     <div class="col-sm-8"><GameBoard class="mb-3" :shotlist="shotlist" /></div>
     <div class="col-sm-4">
       <TheSpeechManager @doTurn="doTurn($event)" />
@@ -13,13 +13,11 @@
       </div>
     </div>
   </div>
-  <div>
-    <div class="alert alert-success text-center">
-      <h1>GAME OVER</h1>
-      <button class="btn btn-lg btn-success text-uppercase" @click="init()">
-        Restart
-      </button>
-    </div>
+  <div v-show="victory" class="alert alert-success text-center">
+    <h1>VICTORY</h1>
+    <button class="btn btn-lg btn-success text-uppercase" @click="init()">
+      Restart
+    </button>
   </div>
 </template>
 
@@ -43,7 +41,7 @@ export default {
     return {
       shotlist: [],
       ships: [],
-      gameOver: false,
+      victory: false,
     };
   },
   computed: {},
@@ -70,7 +68,7 @@ export default {
       let hits = this.shotlist.filter((shot) => shot.hit);
 
       if (hits.length == this.ships.length) {
-        this.gameOver = true;
+        this.victory = true;
       }
 
       // no lose condition.
@@ -97,7 +95,9 @@ export default {
       this.shotlist = [];
       this.ships = [];
       this.placeShips();
-      this.gameOver = false;
+      this.placeShips();
+      this.placeShips();
+      this.victory = false;
     },
   },
   mounted() {
