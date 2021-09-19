@@ -8,6 +8,7 @@
       <TheSpeechManager @doTurn="doTurn($event)" />
       <TurnsTaken :turnsTaken="shotlist.length" />
       <Shotlist :shotlist="shotlist" />
+      <SunkShips :shotlist="shotlist" :ships="ships" />
       <div class="alert alert-warning text-start">
         <pre>{{ ships }}</pre>
       </div>
@@ -28,6 +29,7 @@ import TheSpeechManager from "@/components/TheSpeechManager";
 import GameBoard from "@/components/GameBoard";
 import TurnsTaken from "@/components/TurnsTaken";
 import Shotlist from "@/components/Shotlist";
+import SunkShips from "@/components/SunkShips";
 
 export default {
   name: "Home",
@@ -36,6 +38,7 @@ export default {
     GameBoard,
     TurnsTaken,
     Shotlist,
+    SunkShips,
   },
   data: function () {
     return {
@@ -73,7 +76,7 @@ export default {
 
       // no lose condition.
     },
-    placeShip(shipLength) {
+    placeShip(shipLength, shipName) {
       let xAxis = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
       let yAxis = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
@@ -107,7 +110,7 @@ export default {
         let x = xAxis[tempIndex];
         let y = yAxis[yIndex];
 
-        let coord = { x: x, y: y };
+        let coord = { x: x, y: y, name: shipName };
 
         this.ships.push(coord);
       }
@@ -115,7 +118,11 @@ export default {
     init() {
       this.shotlist = [];
       this.ships = [];
-      this.placeShip(2);
+      this.placeShip(1, "Frigate");
+      this.placeShip(2, "Cruiser");
+      //this.placeShip(3, "Submarine");
+      //this.placeShip(4, "Battleship");
+      //this.placeShip(5, "Carrier");
       this.victory = false;
     },
   },
