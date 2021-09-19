@@ -26,5 +26,7 @@
   { "from" : "before",  "to" : "B4"},
   { "from" : "sex",     "to" : "6"},
   { "from" : "see",     "to" : "C"},
-  { "from" : "elsa",     "to" : "A"}
+  { "from" : "elsa",     "to" : "A"},
+    { "from" : "for",     "to" : "4"},
+    { "from" : "V",     "to" : "5"}
 ]

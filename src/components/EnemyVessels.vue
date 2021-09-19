@@ -23,7 +23,7 @@
     </div>
     <div class="card-footer">
       <button class="btn btn-link btn-sm" @click="toggleReveal()">
-        Reveal Vessel Locations
+        Reveal Vessels
       </button>
       <pre v-show="revealVessels" class="border border-danger">{{ ships }}</pre>
     </div>

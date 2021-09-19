@@ -113,7 +113,7 @@ export default {
           let tempIndex = xIndex + i;
 
           if (tempIndex >= xAxis.length) {
-            this.placeShip(shipLength);
+            this.placeShip(shipLength, shipName);
             return;
           }
 
@@ -123,7 +123,7 @@ export default {
           let tempIndex = yIndex + i;
 
           if (tempIndex >= yAxis.length) {
-            this.placeShip(shipLength);
+            this.placeShip(shipLength, shipName);
             return;
           }
 
@@ -136,7 +136,7 @@ export default {
         let taken = this.hasShip(coord);
 
         if (taken) {
-          this.placeShip(shipLength);
+          this.placeShip(shipLength, shipName);
           return;
         }
       }
@@ -175,7 +175,11 @@ export default {
     init() {
       this.shotlist = [];
       this.ships = [];
-      this.placeShip(2, "Cruiser");
+      this.placeShip(2, "Frigate");
+      this.placeShip(3, "Cruiser");
+      this.placeShip(3, "Submarine");
+      this.placeShip(4, "Battleship");
+      this.placeShip(5, "Carrier");
       this.victory = false;
     },
   },

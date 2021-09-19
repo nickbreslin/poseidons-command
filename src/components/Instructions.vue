@@ -19,6 +19,10 @@ Alpha, Bravo, Charlie, Delta, Echo, Foxtrot, Hotel, India, Juliet</pre
           The speech-to-text feature may run into errors and you'll need to
           click <b>Start</b> to continue the speech-to-text functionality .
         </li>
+        <li>
+          If you need help, the enemy locations can be revealed by clicking
+          <b>Reveal Vessels</b>.
+        </li>
         <li>Game ends when all enemy vessels are sunk.</li>
       </ul>
     </div>
