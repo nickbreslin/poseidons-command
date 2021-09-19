@@ -1,21 +1,33 @@
-![image](https://user-images.githubusercontent.com/267296/131212103-02f86377-78b4-4b87-a66a-136449c5209e.png)
+
+# POSEIDON'S COMMAND
+
+## TODOS
+
+- Place ships
+-- Choose an orientation
+-- Find an initial grid-square
+---- Check to make sure the ship can fit.
+
+-- 2 - frigate
+-- 3 - sub
+-- 3 - destroyer
+-- 4 - battleship
+-- 5 - carrier
 
 
-  
-# Yggdrasil
+-- Place the ship.
 
+speaking
+-- indicator for when the speaking should begin.
+-- button to begin and end the recognition
 
+-- validate input to command.
+(( prompt for a confirmation ))
+(( setting))
 
+-- check for what ships are out there.
 
-User selects 0 (knows nothing).
-
-- Give them all content that matches against knows nothing.
-
-
-
-
-
-
+(( ship hit list / if it is sunk, update it))
 
 
 ## Project setup
