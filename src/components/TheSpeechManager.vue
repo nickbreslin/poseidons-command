@@ -1,5 +1,6 @@
 <template>
   <div class="card shadow mb-3 shadow">
+    <h1 class="text-danger" v-show="abort">ABORT</h1>
     <div class="card-header h3 text-uppercase text-center">TRANSCRIPT</div>
     <div class="card-body text-center">
       <div class="h1">{{ command }}</div>
@@ -32,6 +33,7 @@ export default {
       transcript: "",
       command: "",
       confidence: "",
+      abort: false,
     };
   },
   props: {},
@@ -78,6 +80,8 @@ export default {
       }
 
       this.command = `${x}${y}`;
+
+      this.$emit("doTurn", { x: x, y: y });
     },
     init() {
       const SpeechRecognition =
@@ -106,7 +110,7 @@ export default {
       };
       this.recognition.onend = () => {
         console.log("OnEnd");
-        if (this.active) {
+        if (this.active && !this.abort) {
           setTimeout(() => {
             this.recognition.start();
           }, 100);
@@ -119,6 +123,8 @@ export default {
 
       this.recognition.onerror = (event) => {
         console.log("On Error", event.error);
+        this.abort = true;
+        this.active = false;
       };
 
       this.recognition.start();
