@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import replacementWords from "@/data/replacements";
+
 export default {
   name: "TheSpeechManager",
   data: function () {
@@ -38,6 +40,7 @@ export default {
       command: "",
       confidence: "",
       abort: false,
+      replacementWords: replacementWords,
     };
   },
   props: {},
@@ -60,6 +63,8 @@ export default {
 
       transcript = transcript.replace("-", "");
       transcript = transcript.replace(" ", "");
+
+      transcript = this.specialRules(transcript);
 
       if (transcript.length < 2 || transcript.length > 3) {
         return false;
@@ -139,6 +144,18 @@ export default {
       };
 
       this.recognition.start();
+    },
+    specialRules(transcript) {
+      transcript = transcript.toLowerCase();
+
+      replacementWords.forEach((replacement) => {
+        if (transcript.includes(replacement.from)) {
+          transcript = transcript.replace(replacement.from, replacement.to);
+          console.log(transcript);
+        }
+      });
+
+      return transcript;
     },
   },
   mounted() {
