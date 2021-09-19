@@ -1,67 +1,64 @@
 <template>
-  <!-- <TopicCard /> -->
-  <!-- Conclusion -->
-  <ProgressBar class="mb-3" />
-  <GameBoard class="mb-3" />
+  <h1>Voice of the Seas</h1>
+  <div class="row">
+    <div class="col-8"><GameBoard class="mb-3" /></div>
+    <div class="col-4">
+      <TheSpeechManager v-if="0" class="mb-3 card card-body shadow" />
+      <div class="alert alert-secondary shadow">
+        Turns Taken: {{ turnsTaken }}
+      </div>
 
-  <TheIntroduction v-show="!isStarted" @doBegin="doBegin()" v-if="0" />
-
-  <div v-show="isStarted && !isDone" v-if="0">
-    <TopicCard v-bind="currentTopic" @doAnswer="doAnswer($event)" />
+      <div class="shot-list-wrapper card card-body shadow">
+        <div v-for="(shot, i) in shotsFired" :key="shot">
+          <div
+            class="alert mb-1"
+            :class="{
+              'alert-danger': shot.hit === true,
+              'alert-secondary': shot.hit !== true,
+            }"
+          >
+            Shot #{{ i + 1 }} -- {{ shot.x }},{{ shot.y }}
+          </div>
+        </div>
+      </div>
+      <!-- shot count -->
+      <!-- shotlist -->
+    </div>
   </div>
-
-  <TheConclusion v-show="isDone" v-if="0" />
-  <div class="mt-3 alert alert-success">{{ responses }}</div>
 </template>
 
 <script>
 // @ is an alias to /src
 
-import TheIntroduction from "@/components/TheIntroduction";
-import TheConclusion from "@/components/TheConclusion";
-
-import TopicCard from "@/components/TopicCard";
-import ProgressBar from "@/components/ProgressBar";
+import TheSpeechManager from "@/components/TheSpeechManager";
 import GameBoard from "@/components/GameBoard";
-
-import topicsJSON from "@/data/topics";
 
 export default {
   name: "Home",
   components: {
-    TheIntroduction,
-    TopicCard,
-    ProgressBar,
-    TheConclusion,
+    TheSpeechManager,
     GameBoard,
   },
   data: function () {
     return {
-      topics: topicsJSON,
-      currentTopicIndex: 0,
-      isStarted: false,
-      responses: [],
+      turnsTaken: 0,
+      shotsFired: [
+        { x: 0, y: 1, hit: true },
+        { x: 0, y: 1, hit: false },
+        { x: 0, y: 1, hit: true },
+      ],
     };
   },
-  computed: {
-    currentTopic() {
-      let filteredTopic = this.topics.filter((e) => e.id);
-      return filteredTopic[this.currentTopicIndex];
-    },
-    totalTopics() {
-      return this.topics.length;
-    },
-    isDone() {
-      return this.currentTopicIndex == this.totalTopics;
-    },
-  },
+  computed: {},
   methods: {
-    doBegin() {
-      this.isStarted = true;
-    },
-    doAnswer(value) {
-      this.currentTopicIndex += 1;
-      this.responses.push(value);
+    doTurn(x, y) {
+      this.turnsTaken += 1;
+
+      this.shortsFired.push({ x: x, y: y });
+
+      // if win condition?
+
+      // no lose condition.
     },
   },
 };

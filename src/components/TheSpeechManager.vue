@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div class="alert alert-info">{{ context }}</div>
+    <div class="alert alert-info h2">{{ context }}</div>
     <div class="alert alert-warning">{{ confidence }}</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Speech",
+  name: "TheSpeechManager",
   data: function () {
     return {
       context: "",
@@ -15,13 +15,7 @@ export default {
     };
   },
   props: {},
-  computed: {
-    percent() {
-      let percent = (100 / this.denominator) * this.numerator;
-      percent = Math.round(percent);
-      return percent;
-    },
-  },
+  computed: {},
   methods: {
     init() {
       const SpeechRecognition =
@@ -42,7 +36,7 @@ export default {
 
       this.recognition.onresult = (event) => {
         const result = event.results[0][0].transcript;
-        this.context = "Result received: " + result + ".";
+        this.context = result;
         this.confidence = event.results[0][0].confidence;
       };
 
