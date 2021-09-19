@@ -1,5 +1,7 @@
 <template>
-  <h1>Voice of the Seas</h1>
+  <div class="alert alert-secondary mt-3">
+    <h1 class="text-uppercase m-0">Poseidon's Command</h1>
+  </div>
   <div class="row">
     <div class="col-8"><GameBoard class="mb-3" /></div>
     <div class="col-4">

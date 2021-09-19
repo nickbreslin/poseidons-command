@@ -5,6 +5,10 @@
   font-weight:400;
 }
 
+h1,h2, h3 {
+font-family: 'Saira Stencil One', cursive;
+}
+
 
 .text-small {
   font-size: 0.85em;
