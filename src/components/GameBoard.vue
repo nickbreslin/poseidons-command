@@ -2,8 +2,12 @@
   <div class="grid card card-body shadow p-5 text-center">
     <div class="grid-row justify-content-center">
       <div class="square text-center"></div>
-      <div v-for="x in xAxis" :key="x" class="square m-0 p-0 text-center">
-        {{ x }}
+      <div
+        v-for="x in xAxis"
+        :key="x"
+        class="square m-0 p-0 text-center d-flex flex-column"
+      >
+        <span class="mt-auto h3 m-0 p-0 pb-2">{{ x }}</span>
       </div>
     </div>
     <div
@@ -11,7 +15,9 @@
       :key="y"
       class="grid-row m-0 p-0 justify-content-center"
     >
-      <div class="square text-center">{{ y }}</div>
+      <div class="square d-flex flex-row-reverse align-items-center">
+        <div class="text-end h3 m-0 p-0 pe-3">{{ y }}</div>
+      </div>
       <div
         v-for="x in xAxis"
         :key="x"

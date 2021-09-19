@@ -5,10 +5,10 @@
   <div class="row" v-show="!victory">
     <div class="col-sm-8"><GameBoard class="mb-3" :shotlist="shotlist" /></div>
     <div class="col-sm-4">
-      <TheSpeechManager @doTurn="doTurn($event)" />
+      <TheSpeechManager @doTurn="doTurn($event)" class="alert-success" />
+      <SunkShips :shotlist="shotlist" :ships="ships" class="alert-danger" />
       <TurnsTaken :turnsTaken="shotlist.length" />
       <Shotlist :shotlist="shotlist" />
-      <SunkShips :shotlist="shotlist" :ships="ships" />
       <div class="alert alert-warning text-start">
         <pre>{{ ships }}</pre>
       </div>
