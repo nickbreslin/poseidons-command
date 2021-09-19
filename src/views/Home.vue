@@ -7,23 +7,7 @@
     <div class="col-4">
       <TheSpeechManager v-if="0" class="mb-3 card card-body shadow" />
       <TurnsTaken :turnsTaken="turnsTaken" />
-
-      <div class="card shadow mb-3 shadow">
-        <div class="card-header h3 text-uppercase">Shotlist</div>
-        <div class="card-body">
-          <div v-for="(shot, i) in shotsFired" :key="shot">
-            <div
-              class="alert mb-1"
-              :class="{
-                'alert-danger': shot.hit === true,
-                'alert-secondary': shot.hit !== true,
-              }"
-            >
-              Shot #{{ i + 1 }} -- {{ shot.x }},{{ shot.y }}
-            </div>
-          </div>
-        </div>
-      </div>
+      <Shotlist :shotlist="shotlist" />
     </div>
   </div>
 </template>
@@ -34,6 +18,7 @@
 import TheSpeechManager from "@/components/TheSpeechManager";
 import GameBoard from "@/components/GameBoard";
 import TurnsTaken from "@/components/TurnsTaken";
+import Shotlist from "@/components/Shotlist";
 
 export default {
   name: "Home",
@@ -41,11 +26,12 @@ export default {
     TheSpeechManager,
     GameBoard,
     TurnsTaken,
+    Shotlist,
   },
   data: function () {
     return {
       turnsTaken: 5,
-      shotsFired: [
+      shotlist: [
         { x: 0, y: 1, hit: true },
         { x: 0, y: 1, hit: false },
         { x: 0, y: 1, hit: true },
@@ -57,7 +43,7 @@ export default {
     doTurn(x, y) {
       this.turnsTaken += 1;
 
-      this.shortsFired.push({ x: x, y: y });
+      this.shotlist.push({ x: x, y: y });
 
       // if win condition?
 
