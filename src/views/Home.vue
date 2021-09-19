@@ -73,30 +73,49 @@ export default {
 
       // no lose condition.
     },
-    placeShips() {
+    placeShip(shipLength) {
       let xAxis = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
       let yAxis = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
       let xIndex = Math.floor(Math.random() * xAxis.length);
       let yIndex = Math.floor(Math.random() * yAxis.length);
 
-      let x = xAxis[xIndex];
-      let y = yAxis[yIndex];
+      // VALIDATE
+      for (let i = 0; i < shipLength; i++) {
+        let tempIndex = xIndex + i;
 
-      let coord = { x: x, y: y };
+        if (x >= xAxis.length) {
+          this.placeShip(shipLength);
+        }
 
-      let taken = this.hasShip(coord);
+        let x = xAxis[tempIndex];
+        let y = yAxis[yIndex];
 
-      if (!taken) {
+        let coord = { x: x, y: y };
+
+        let taken = this.hasShip(coord);
+
+        if (taken) {
+          this.placeShip(shipLength);
+        }
+      }
+
+      // PLACE THE SHIP
+      for (let i = 0; i < shipLength; i++) {
+        let tempIndex = xIndex + i;
+
+        let x = xAxis[tempIndex];
+        let y = yAxis[yIndex];
+
+        let coord = { x: x, y: y };
+
         this.ships.push(coord);
       }
     },
     init() {
       this.shotlist = [];
       this.ships = [];
-      this.placeShips();
-      this.placeShips();
-      this.placeShips();
+      this.placeShip(2);
       this.victory = false;
     },
   },
