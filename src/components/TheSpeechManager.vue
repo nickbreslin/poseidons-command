@@ -55,6 +55,12 @@ export default {
         return false;
       }
 
+      // 1 is won, "I1"
+      // 2 is too, "I2"
+      // b4 is before
+      // remove dashes
+      //
+
       let x = transcript[0];
       let y = transcript.substring(1, transcript.length);
 
@@ -101,7 +107,9 @@ export default {
       this.recognition.onend = () => {
         console.log("OnEnd");
         if (this.active) {
-          this.recognition.start();
+          setTimeout(() => {
+            this.recognition.start();
+          }, 100);
         }
       };
 
