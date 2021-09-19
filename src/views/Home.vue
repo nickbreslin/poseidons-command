@@ -6,25 +6,27 @@
     <div class="col-8"><GameBoard class="mb-3" /></div>
     <div class="col-4">
       <TheSpeechManager v-if="0" class="mb-3 card card-body shadow" />
-      <div class="alert alert-secondary shadow">
-        Turns Taken: {{ turnsTaken }}
+      <div class="card shadow mb-3">
+        <div class="card-header h3 text-uppercase">Turns Taken</div>
+        <div class="card-body">{{ turnsTaken }}</div>
       </div>
 
-      <div class="shot-list-wrapper card card-body shadow">
-        <div v-for="(shot, i) in shotsFired" :key="shot">
-          <div
-            class="alert mb-1"
-            :class="{
-              'alert-danger': shot.hit === true,
-              'alert-secondary': shot.hit !== true,
-            }"
-          >
-            Shot #{{ i + 1 }} -- {{ shot.x }},{{ shot.y }}
+      <div class="card shadow mb-3 shadow">
+        <div class="card-header h3 text-uppercase">Shotlist</div>
+        <div class="card-body">
+          <div v-for="(shot, i) in shotsFired" :key="shot">
+            <div
+              class="alert mb-1"
+              :class="{
+                'alert-danger': shot.hit === true,
+                'alert-secondary': shot.hit !== true,
+              }"
+            >
+              Shot #{{ i + 1 }} -- {{ shot.x }},{{ shot.y }}
+            </div>
           </div>
         </div>
       </div>
-      <!-- shot count -->
-      <!-- shotlist -->
     </div>
   </div>
 </template>
