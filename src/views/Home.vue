@@ -1,19 +1,16 @@
 <template>
   <!-- <TopicCard /> -->
   <!-- Conclusion -->
+  <ProgressBar class="mb-3" />
+  <GameBoard class="mb-3" />
 
-  <TheIntroduction v-show="!isStarted" @doBegin="doBegin()" />
-  <ProgressBar
-    v-show="isStarted"
-    :numerator="currentTopicIndex"
-    :denominator="totalTopics"
-    class="mb-3"
-  />
-  <div v-show="isStarted && !isDone">
+  <TheIntroduction v-show="!isStarted" @doBegin="doBegin()" v-if="0" />
+
+  <div v-show="isStarted && !isDone" v-if="0">
     <TopicCard v-bind="currentTopic" @doAnswer="doAnswer($event)" />
   </div>
 
-  <TheConclusion v-show="isDone" />
+  <TheConclusion v-show="isDone" v-if="0" />
   <div class="mt-3 alert alert-success">{{ responses }}</div>
 </template>
 
@@ -25,6 +22,8 @@ import TheConclusion from "@/components/TheConclusion";
 
 import TopicCard from "@/components/TopicCard";
 import ProgressBar from "@/components/ProgressBar";
+import GameBoard from "@/components/GameBoard";
+
 import topicsJSON from "@/data/topics";
 
 export default {
@@ -34,6 +33,7 @@ export default {
     TopicCard,
     ProgressBar,
     TheConclusion,
+    GameBoard,
   },
   data: function () {
     return {
