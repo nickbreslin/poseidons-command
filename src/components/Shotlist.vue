@@ -1,7 +1,7 @@
 <template>
   <div class="card shadow mb-3 shadow">
     <div class="card-header h3 text-uppercase text-center">Shotlist</div>
-    <div class="card-body">
+    <div class="card-body text-center">
       <div v-for="(shot, i) in shotlist" :key="shot">
         <div
           class="alert mb-1"
@@ -10,7 +10,15 @@
             'alert-secondary': shot.hit !== true,
           }"
         >
-          Shot #{{ shotlist.length - i }} -- {{ shot.x }},{{ shot.y }}
+          <span
+            class="badge me-3"
+            :class="{
+              'bg-danger': shot.hit === true,
+              'bg-secondary': shot.hit !== true,
+            }"
+            >{{ shotlist.length - i }}</span
+          >
+          {{ shot.x }}{{ shot.y }}
         </div>
       </div>
     </div>

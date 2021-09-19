@@ -14,18 +14,22 @@
           </div>
           <div class="col">
             <span v-for="i in ship.size" :key="i">
-              <i v-if="ship.isSunk" class="bi bi-x-circle text-danger"></i>
-              <i v-else class="bi bi-circle"></i
+              <i v-if="ship.isSunk" class="bi bi-x-circle text-danger me-1"></i>
+              <i v-else class="bi bi-circle me-1"></i
             ></span>
           </div>
         </div>
       </div>
     </div>
-    <div class="card-footer">
-      <button class="btn btn-link btn-sm" @click="toggleReveal()">
+    <div class="card-footer text-end">
+      <button class="btn btn-outline-danger btn-sm" @click="toggleReveal()">
         Reveal Vessels
       </button>
-      <pre v-show="revealVessels" class="border border-danger">{{ ships }}</pre>
+      <pre
+        v-show="revealVessels"
+        class="border border-danger mt-3 text-start"
+        >{{ ships }}</pre
+      >
     </div>
   </div>
 </template>
