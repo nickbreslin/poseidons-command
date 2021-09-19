@@ -21,12 +21,23 @@
         </div>
       </div>
     </div>
+    <div class="card-footer">
+      <button class="btn btn-link btn-sm" @click="toggleReveal()">
+        Reveal Vessel Locations
+      </button>
+      <pre v-show="revealVessels" class="border border-danger">{{ ships }}</pre>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "SunkShips",
+  name: "EnemyVessels",
+  data: function () {
+    return {
+      revealVessels: false,
+    };
+  },
   props: {
     shotlist: Array,
     ships: Array,
@@ -55,6 +66,9 @@ export default {
     },
   },
   methods: {
+    toggleReveal() {
+      this.revealVessels = !this.revealVessels;
+    },
     didSinkShip(segments) {
       // reduce shotlist to just hitlist
       let hitlist = this.shotlist.filter((shot) => shot.hit);

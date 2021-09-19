@@ -1,5 +1,5 @@
 <template>
-  <div class="grid card card-body shadow p-5 text-center">
+  <div class="grid card card-body shadow pb-5 pe-5 text-center">
     <div class="grid-row justify-content-center">
       <div class="square text-center"></div>
       <div

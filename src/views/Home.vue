@@ -1,25 +1,28 @@
 <template>
-  <div class="alert alert-secondary mt-3 text-center">
+  <div class="alert alert-secondary mt-3 text-center shadow">
     <h1 class="text-uppercase m-0">Poseidon's Command</h1>
   </div>
   <div class="row" v-show="!victory">
-    <div class="col-sm-8"><GameBoard class="mb-3" :shotlist="shotlist" /></div>
+    <div class="col-sm-8">
+      <GameBoard class="mb-3" :shotlist="shotlist" />
+      <Instructions />
+    </div>
     <div class="col-sm-4">
       <TheSpeechManager
         @doTurn="doTurn($event)"
         class="alert-success text-dark"
       />
-      <SunkShips
+      <EnemyVessels
         v-if="1"
         :shotlist="shotlist"
         :ships="ships"
         class="alert-danger text-dark"
       />
-      <TurnsTaken :turnsTaken="shotlist.length" />
+      <TurnsTaken
+        :turnsTaken="shotlist.length"
+        class="alert-warning text-dark"
+      />
       <Shotlist :shotlist="shotlist" />
-      <div class="alert alert-warning text-start">
-        <pre>{{ ships }}</pre>
-      </div>
     </div>
   </div>
   <div v-show="victory" class="alert alert-success text-center">
@@ -37,7 +40,8 @@ import TheSpeechManager from "@/components/TheSpeechManager";
 import GameBoard from "@/components/GameBoard";
 import TurnsTaken from "@/components/TurnsTaken";
 import Shotlist from "@/components/Shotlist";
-import SunkShips from "@/components/SunkShips";
+import EnemyVessels from "@/components/EnemyVessels";
+import Instructions from "@/components/Instructions";
 
 export default {
   name: "Home",
@@ -46,7 +50,8 @@ export default {
     GameBoard,
     TurnsTaken,
     Shotlist,
-    SunkShips,
+    EnemyVessels,
+    Instructions,
   },
   data: function () {
     return {
@@ -162,7 +167,7 @@ export default {
           y = yAxis[tempIndex];
         }
 
-        let coord = { x: x, y: y, name: shipName, oren: orientation };
+        let coord = { x: x, y: y, name: shipName };
 
         this.ships.push(coord);
       }
