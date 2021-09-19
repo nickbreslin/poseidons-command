@@ -44,7 +44,7 @@ export default {
   },
   data: function () {
     return {
-      turnsTaken: 0,
+      turnsTaken: 5,
       shotsFired: [
         { x: 0, y: 1, hit: true },
         { x: 0, y: 1, hit: false },
