@@ -2,7 +2,7 @@
   <div class="card shadow mb-3 shadow">
     <div class="card-header h3 text-uppercase text-center">Shotlist</div>
     <div class="card-body">
-      <div v-for="(shot, i) in reverselist" :key="shot">
+      <div v-for="(shot, i) in shotlist" :key="shot">
         <div
           class="alert mb-1"
           :class="{
@@ -10,7 +10,7 @@
             'alert-secondary': shot.hit !== true,
           }"
         >
-          Shot #{{ reverselist.length - i }} -- {{ shot.x }},{{ shot.y }}
+          Shot #{{ shotlist.length - i }} -- {{ shot.x }},{{ shot.y }}
         </div>
       </div>
     </div>
@@ -22,12 +22,6 @@ export default {
   name: "Shotlist",
   props: {
     shotlist: Array,
-  },
-  computed: {
-    reverselist() {
-      let list = this.shotlist;
-      return list;
-    },
   },
 };
 </script>

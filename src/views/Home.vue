@@ -68,6 +68,14 @@ export default {
       // can't repeat a shot.
       //
 
+      let repeatShot = this.shotlist.filter(
+        (_shot) => _shot.x == shot.x && _shot.y == shot.y
+      );
+
+      if (repeatShot.length) {
+        return;
+      }
+
       this.turnsTaken += 1;
 
       let hit = this.hasShip(shot);
@@ -88,20 +96,35 @@ export default {
       let xAxis = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
       let yAxis = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
+      let orientation = Math.floor(Math.random() * 2);
       let xIndex = Math.floor(Math.random() * xAxis.length);
       let yIndex = Math.floor(Math.random() * yAxis.length);
 
       // VALIDATE
       for (let i = 0; i < shipLength; i++) {
-        let tempIndex = xIndex + i;
+        let x, y;
 
-        if (tempIndex >= xAxis.length) {
-          this.placeShip(shipLength);
-          return;
+        if (orientation === 1) {
+          let tempIndex = xIndex + i;
+
+          if (tempIndex >= xAxis.length) {
+            this.placeShip(shipLength);
+            return;
+          }
+
+          x = xAxis[tempIndex];
+          y = yAxis[yIndex];
+        } else {
+          let tempIndex = yIndex + i;
+
+          if (tempIndex >= yAxis.length) {
+            this.placeShip(shipLength);
+            return;
+          }
+
+          x = xAxis[xIndex];
+          y = yAxis[tempIndex];
         }
-
-        let x = xAxis[tempIndex];
-        let y = yAxis[yIndex];
 
         let coord = { x: x, y: y };
 
@@ -115,12 +138,31 @@ export default {
 
       // PLACE THE SHIP
       for (let i = 0; i < shipLength; i++) {
-        let tempIndex = xIndex + i;
+        let x, y;
 
-        let x = xAxis[tempIndex];
-        let y = yAxis[yIndex];
+        if (orientation === 1) {
+          let tempIndex = xIndex + i;
 
-        let coord = { x: x, y: y, name: shipName };
+          if (tempIndex >= xAxis.length) {
+            this.placeShip(shipLength);
+            return;
+          }
+
+          x = xAxis[tempIndex];
+          y = yAxis[yIndex];
+        } else {
+          let tempIndex = yIndex + i;
+
+          if (tempIndex >= yAxis.length) {
+            this.placeShip(shipLength);
+            return;
+          }
+
+          x = xAxis[xIndex];
+          y = yAxis[tempIndex];
+        }
+
+        let coord = { x: x, y: y, name: shipName, oren: orientation };
 
         this.ships.push(coord);
       }
@@ -128,11 +170,7 @@ export default {
     init() {
       this.shotlist = [];
       this.ships = [];
-      this.placeShip(1, "Frigate");
       this.placeShip(2, "Cruiser");
-      //this.placeShip(3, "Submarine");
-      //this.placeShip(4, "Battleship");
-      //this.placeShip(5, "Carrier");
       this.victory = false;
     },
   },

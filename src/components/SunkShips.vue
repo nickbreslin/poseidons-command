@@ -34,7 +34,7 @@ export default {
   computed: {
     shipNames() {
       // Find all unique ships
-      let shipNames = [...this.ships].map((ship) => ship.name);
+      let shipNames = this.ships.map((ship) => ship.name);
       return [...new Set(shipNames)];
     },
     shipsData() {
@@ -42,7 +42,7 @@ export default {
 
       // Find sizes for all unique ships
       this.shipNames.forEach((shipName) => {
-        let segments = [...this.ships].filter((ship) => ship.name == shipName);
+        let segments = this.ships.filter((ship) => ship.name == shipName);
         let isShipSunk = this.didSinkShip(segments);
         shipData.push({
           name: shipName,
@@ -63,7 +63,7 @@ export default {
         let didHit = false;
 
         // causing some sort of overwrite of the ships prop
-        [...segments].forEach((segment) => {
+        segments.forEach((segment) => {
           if (segment.x == hit.x && segment.y == hit.y) {
             didHit = true;
             return;
