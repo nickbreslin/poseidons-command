@@ -3,7 +3,7 @@
     <h1 class="text-uppercase m-0">Poseidon's Command</h1>
   </div>
   <div class="row">
-    <div class="col-sm-8"><GameBoard class="mb-3" /></div>
+    <div class="col-sm-8"><GameBoard class="mb-3" :shotlist="shotlist" /></div>
     <div class="col-sm-4">
       <TheSpeechManager v-if="0" class="mb-3 card card-body shadow" />
       <TurnsTaken :turnsTaken="shotlist.length" />
@@ -31,15 +31,18 @@ export default {
   data: function () {
     return {
       shotlist: [
-        { x: 0, y: 1, hit: true },
-        { x: 0, y: 1, hit: false },
-        { x: 0, y: 1, hit: true },
+        { x: "A", y: "6", hit: true },
+        { x: "C", y: "1", hit: false },
+        { x: "H", y: "5", hit: true },
       ],
     };
   },
   computed: {},
   methods: {
     doTurn(x, y) {
+      // can't repeat a shot.
+      //
+
       this.turnsTaken += 1;
 
       this.shotlist.push({ x: x, y: y });

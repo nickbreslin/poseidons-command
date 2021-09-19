@@ -17,11 +17,12 @@
         :key="x"
         class="square border border-secondary m-0 p-0 text-center"
         :class="{
-          'alert-primary': 1,
-          'alert-danger': x === 'C',
-          'alert-secondary': y === '3',
+          'alert-primary': hitState(x, y) === 'NO_SHOT',
+          'alert-danger': hitState(x, y) == 'HIT',
+          'alert-secondary': hitState(x, y) == 'MISS',
         }"
       >
+        <!--{{ hitState(x, y) }} -->
         <!--{{ x }}{{ y }}-->
         <!-- <i class="bi bi-check-circle"></i>-->
         <!--<i class="bi bi-x-circle"></i>-->
@@ -40,10 +41,20 @@ export default {
     };
   },
   props: {
-    shotList: [],
+    shotlist: Array,
   },
   computed: {},
-  methods: {},
+  methods: {
+    hitState(x, y) {
+      const shot = this.shotlist.filter((shot) => shot.x == x && shot.y == y);
+
+      if (!shot.length) {
+        return "NO_SHOT";
+      }
+
+      return shot[0].hit === true ? "HIT" : "MISS";
+    },
+  },
   mounted() {},
 };
 </script>

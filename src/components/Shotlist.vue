@@ -21,7 +21,7 @@
 export default {
   name: "Shotlist",
   props: {
-    shotlist: [],
+    shotlist: Array,
   },
 };
 </script>
