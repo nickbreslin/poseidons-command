@@ -10,7 +10,7 @@
   { "from" : "india",   "to" : "I"},
   { "from" : "juliett", "to" : "J"},
   { "from" : "juliet",  "to" : "J"},
-  { "from" : "julia",  "to" : "J"},
+  { "from" : "julia",   "to" : "J"},
   { "from" : "one",     "to" : "1"},
   { "from" : "two",     "to" : "2"},
   { "from" : "three",   "to" : "3"},
@@ -20,13 +20,13 @@
   { "from" : "six",     "to" : "6"},
   { "from" : "seven",   "to" : "7"},
   { "from" : "eight",   "to" : "8"},
-  { "from" : "niner",    "to" : "9"},
+  { "from" : "niner",   "to" : "9"},
   { "from" : "nine",    "to" : "9"},
   { "from" : "ten",     "to" : "10"},
   { "from" : "before",  "to" : "B4"},
   { "from" : "sex",     "to" : "6"},
   { "from" : "see",     "to" : "C"},
-  { "from" : "elsa",     "to" : "A"},
-    { "from" : "for",     "to" : "4"},
-    { "from" : "V",     "to" : "5"}
+  { "from" : "elsa",    "to" : "A"},
+  { "from" : "for",     "to" : "4"},
+  { "from" : "v",       "to" : "5"}
 ]
